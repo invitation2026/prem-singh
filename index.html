@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PREM SINGHA जी के सम्मान समारोह का आधिकारिक निमंत्रण। 10 मई 2026, गुरुग्राम।">
+  <title>सम्मान समारोह | PREM SINGHA</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <p class="loader-text">निमंत्रण लोड हो रहा है...</p>
+    </div>
+  </div>
+
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Parallax Layers -->
+  <div class="parallax-layer layer-1"></div>
+  <div class="parallax-layer layer-2"></div>
+
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <header class="hero" data-animate data-delay="0">
+      <p class="subtitle animate-fade-in-up">सम्मान समारोह</p>
+      <h1 class="name" id="typing-name"></h1>
+      <div class="divider animate-scale"></div>
+      <p class="invite-msg animate-fade-in-up">आपका हार्दिक स्वागत है। इस विशेष अवसर पर आपकी उपस्थिति हमारे लिए अत्यंत महत्वपूर्ण है।</p>
+      
+      <div class="floating-element float-1">✨</div>
+      <div class="floating-element float-2">🌟</div>
+    </header>
+
+    <!-- Invitation Message Section (New) -->
+    <section class="message-section" data-animate data-delay="200">
+      <div class="message-card tilt-card">
+        <p class="message-line animate-fade-in-up">हम आपको हमारे नए घर में आयोजित</p>
+        <p class="message-line highlight animate-fade-in-up">इस विशेष अवसर पर सादर आमंत्रित करते हैं।</p>
+        <div class="message-divider"></div>
+        <p class="message-line animate-fade-in-up">इस नए सफर की शुरुआत को आपके साथ साझा करने का</p>
+        <p class="message-line animate-fade-in-up">हमें इंतज़ार रहेगा।</p>
+        <p class="message-line animate-fade-in-up">आपकी उपस्थिति इस अवसर को हमारे लिए और भी खास बना देगी।</p>
+        <p class="message-line highlight animate-fade-in-up">आइए, इस खुशी के मौके को मिलकर यादगार बनाएं। 🙏</p>
+        <div class="message-glow"></div>
+      </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="details-grid" data-animate data-delay="400">
+      <div class="detail-card tilt-card">
+        <div class="icon animate-bounce">📅</div>
+        <h2>तिथि एवं समय</h2>
+        <p class="date">रविवार, 10 मई 2026</p>
+        <p class="time">शाम 5:00 बजे से</p>
+        <div class="card-glow"></div>
+      </div>
+
+      <div class="detail-card tilt-card">
+        <div class="icon animate-bounce">📍</div>
+        <h2>स्थान</h2>
+        <address class="address">
+          NKV Colony, House No. U379<br>
+          23 Feet Road, Dhumaspur<br>
+          Gurugram, Haryana - 122101, India
+        </address>
+        <a href="https://share.google/5OvtpOJqf0SSlaMKE" target="_blank" rel="noopener" class="map-btn">
+          🗺️ View on Google Maps
+          <span class="btn-arrow">→</span>
+        </a>
+        <div class="card-glow"></div>
+      </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown-section" data-animate data-delay="600">
+      <h2 class="animate-fade-in">कार्यक्रम प्रारंभ होने में शेष समय</h2>
+      <div class="timer" id="countdown">
+        <div class="time-unit">
+          <span class="time-value" id="days">00</span>
+          <span class="time-label">दिन</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="hours">00</span>
+          <span class="time-label">घंटे</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="minutes">00</span>
+          <span class="time-label">मिनट</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="seconds">00</span>
+          <span class="time-label">सेकंड</span>
+        </div>
+      </div>
+      <div class="countdown-glow"></div>
+    </section>
+
+    <!-- Invitation Image Section (New - Scroll Reveal) -->
+    <section class="image-section" data-animate data-delay="800" id="invitation-image">
+      <h2 class="image-title animate-fade-in">आधिकारिक निमंत्रण पत्र</h2>
+      <p class="image-subtitle">नीचे दिया गया निमंत्रण देखें</p>
+      
+      <div class="image-wrapper tilt-card">
+        <div class="image-frame">
+          <img 
+            src="https://i.ibb.co/TpZc9Sm/IMG-20260504-221104.png" 
+            alt="निमंत्रण पत्र - PREM SINGHA सम्मान समारोह" 
+            class="invitation-img"
+            loading="lazy"
+          >
+          <div class="image-overlay"></div>
+          <div class="image-border-glow"></div>
+        </div>
+        <div class="image-shadow"></div>
+      </div>
+      
+      <p class="image-note animate-fade-in-up">✨ इस विशेष क्षण को संजोए रखें</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" data-animate data-delay="1000">
+      <p class="footer-msg">🙏 आपकी उपस्थिति इस अवसर को और भी स्मरणीय बनाएगी।</p>
+      <p class="copyright">© 2026 सम्मान समारोह | सभी अधिकार सुरक्षित</p>
+      
+      <div class="footer-decoration">
+        <span class="footer-star">✦</span>
+        <span class="footer-star">✦</span>
+        <span class="footer-star">✦</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Confetti Container -->
+  <div id="confetti-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

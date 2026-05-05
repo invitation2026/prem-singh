@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== 1. TYPING ANIMATION FOR NAME ==========
   const nameElement = document.getElementById('typing-name');
   if (nameElement) {
-    const fullName = 'PREM SINGH';
+    const fullName = 'प्रेम सिंह सह परिवार';
     let charIndex = 0;
     function typeNextChar() {
       if (charIndex < fullName.length) {

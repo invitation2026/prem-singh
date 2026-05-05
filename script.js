@@ -5,15 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nameElement) {
     const fullName = 'PREM SINGHA';
     let charIndex = 0;
-    
     function typeNextChar() {
       if (charIndex < fullName.length) {
         nameElement.textContent = fullName.substring(0, charIndex + 1);
         charIndex++;
         setTimeout(typeNextChar, 120);
-      } else { 
-        nameElement.classList.add('typing-complete'); 
-      }
+      } else { nameElement.classList.add('typing-complete'); }
     }
     setTimeout(typeNextChar, 800);
   }
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('particles-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    
     function resizeCanvas() {
       const dpr = isMobile ? 1 : (window.devicePixelRatio || 1);
       canvas.width = window.innerWidth * dpr;
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-
     class Particle {
       constructor() { this.reset(); }
       reset() {
@@ -62,15 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fill();
       }
     }
-
     const particles = [];
     for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-
     function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => { p.update(); p.draw(); });
-      
-      // Connections only on desktop for performance
       if (!isMobile) {
         particles.forEach((p1, i) => {
           for (let j = i + 1; j < particles.length; j++) {
@@ -110,14 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const tiltElements = document.querySelectorAll('.tilt-card');
   tiltElements.forEach(element => {
     if (isMobile) {
-      element.addEventListener('touchstart', function(e) { 
-        this.style.transform = 'scale(1.02)'; 
-        this.style.boxShadow = 'var(--shadow-glow)'; 
-      }, {passive: true});
-      element.addEventListener('touchend', function() { 
-        this.style.transform = 'scale(1)'; 
-        this.style.boxShadow = 'var(--shadow-soft)'; 
-      });
+      element.addEventListener('touchstart', function(e) { this.style.transform = 'scale(1.02)'; this.style.boxShadow = 'var(--shadow-glow)'; }, {passive: true});
+      element.addEventListener('touchend', function() { this.style.transform = 'scale(1)'; this.style.boxShadow = 'var(--shadow-soft)'; });
     } else {
       element.addEventListener('mousemove', (e) => {
         const rect = element.getBoundingClientRect();
@@ -126,113 +111,64 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateX = (y - centerY) / 15, rotateY = (centerX - x) / 15;
         element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
         const glow = element.querySelector('.card-glow, .message-glow');
-        if (glow) { 
-          glow.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`); 
-          glow.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`); 
-        }
+        if (glow) { glow.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`); glow.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`); }
       });
-      element.addEventListener('mouseleave', () => { 
-        element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)'; 
-      });
+      element.addEventListener('mouseleave', () => { element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)'; });
     }
   });
 
   // ========== 6. SCROLL HINT AUTO-HIDE ==========
   const scrollHint = document.getElementById('scroll-hint');
   let userScrolled = false;
-  
-  function hideScrollHint() {
-    if (!userScrolled && scrollHint) { 
-      scrollHint.classList.add('hidden'); 
-      userScrolled = true; 
-    }
-  }
-  
+  function hideScrollHint() { if (!userScrolled && scrollHint) { scrollHint.classList.add('hidden'); userScrolled = true; } }
   if (scrollHint) {
     window.addEventListener('scroll', hideScrollHint, { passive: true });
     window.addEventListener('touchstart', hideScrollHint, { passive: true });
-    scrollHint.addEventListener('click', () => { 
-      hideScrollHint(); 
-      document.querySelector('.message-section')?.scrollIntoView({ behavior: 'smooth' }); 
-    });
+    scrollHint.addEventListener('click', () => { hideScrollHint(); document.querySelector('.message-section')?.scrollIntoView({ behavior: 'smooth' }); });
   }
 
   // ========== 7. COUNTDOWN TIMER ==========
   const countdownContainer = document.getElementById('countdown');
   if (countdownContainer) {
     const eventDate = new Date('2026-05-10T17:00:00+05:30');
-    const daysEl = document.getElementById('days'); 
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes'); 
-    const secondsEl = document.getElementById('seconds');
-
+    const daysEl = document.getElementById('days'); const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes'); const secondsEl = document.getElementById('seconds');
     function updateCountdown() {
-      const now = new Date(); 
-      const diff = eventDate - now;
-      
-      if (diff <= 0) { 
-        countdownContainer.innerHTML = '<p class="event-started">🎉 कार्यक्रम शुरू हो चुका है। आपका स्वागत है!</p>'; 
-        return; 
-      }
-      
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24)); 
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); 
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-      
-      animateNumberChange(daysEl, d); 
-      animateNumberChange(hoursEl, h); 
-      animateNumberChange(minutesEl, m); 
-      animateNumberChange(secondsEl, s);
+      const now = new Date(); const diff = eventDate - now;
+      if (diff <= 0) { countdownContainer.innerHTML = '<p class="event-started">🎉 कार्यक्रम शुरू हो चुका है। आपका स्वागत है!</p>'; return; }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24)); const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); const s = Math.floor((diff % (1000 * 60)) / 1000);
+      animateNumberChange(daysEl, d); animateNumberChange(hoursEl, h); animateNumberChange(minutesEl, m); animateNumberChange(secondsEl, s);
     }
-    
     function animateNumberChange(element, newValue) {
       if (!element) return;
       const current = parseInt(element.textContent) || 0;
-      if (current !== newValue) { 
-        element.style.transform = 'scale(1.15)'; 
-        element.style.textShadow = '0 0 25px var(--accent-glow-strong)';
-        setTimeout(() => { 
-          element.textContent = String(newValue).padStart(2, '0'); 
-          element.style.transform = 'scale(1)'; 
-          element.style.textShadow = '0 0 20px var(--accent-glow)'; 
-        }, 150); 
-      }
+      if (current !== newValue) { element.style.transform = 'scale(1.15)'; element.style.textShadow = '0 0 25px var(--accent-glow-strong)';
+        setTimeout(() => { element.textContent = String(newValue).padStart(2, '0'); element.style.transform = 'scale(1)'; element.style.textShadow = '0 0 20px var(--accent-glow)'; }, 150); }
     }
-    
-    updateCountdown(); 
-    setInterval(updateCountdown, 1000);
+    updateCountdown(); setInterval(updateCountdown, 1000);
   }
 
-  // ========== 8. CONFETTI EFFECT (Direct Call - No Loader Wait) ==========
+  // ========== 8. CONFETTI EFFECT ==========
   function createConfetti() {
     const container = document.getElementById('confetti-container');
     if (!container) return;
-    
     const colors = ['#d4af37', '#f8e6a0', '#ffffff', '#b8c1d1'];
     for (let i = 0; i < 60; i++) {
-      const c = document.createElement('div'); 
-      c.className = 'confetti';
-      c.style.left = Math.random() * 100 + 'vw'; 
-      c.style.background = colors[Math.floor(Math.random() * colors.length)];
-      c.style.width = Math.random() * 8 + 6 + 'px'; 
-      c.style.height = c.style.width;
-      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px'; 
-      c.style.animationDelay = Math.random() * 1.5 + 's';
-      c.style.animationDuration = Math.random() * 2 + 2.5 + 's'; 
-      container.appendChild(c);
+      const c = document.createElement('div'); c.className = 'confetti';
+      c.style.left = Math.random() * 100 + 'vw'; c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = Math.random() * 8 + 6 + 'px'; c.style.height = c.style.width;
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px'; c.style.animationDelay = Math.random() * 1.5 + 's';
+      c.style.animationDuration = Math.random() * 2 + 2.5 + 's'; container.appendChild(c);
       setTimeout(() => c.remove(), 5000);
     }
   }
-  // Confetti ko direct call karo (loader ka wait nahi)
   setTimeout(() => createConfetti(), 500);
 
   // ========== 9. PARALLAX SCROLL ==========
   window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    document.querySelectorAll('.parallax-layer').forEach((layer, index) => { 
-      layer.style.transform = `translateY(${scrolled * (0.3 + index * 0.15)}px)`; 
-    });
+    document.querySelectorAll('.parallax-layer').forEach((layer, index) => { layer.style.transform = `translateY(${scrolled * (0.3 + index * 0.15)}px)`; });
   }, {passive: true});
 
   // ========== 10. IMAGE REVEAL ON SCROLL ==========
@@ -242,15 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target.querySelector('.invitation-img');
-          if (img) { 
-            img.style.opacity = '0'; 
-            img.style.transform = 'scale(0.95)';
-            setTimeout(() => { 
-              img.style.transition = 'opacity 0.8s ease, transform 0.8s ease'; 
-              img.style.opacity = '1'; 
-              img.style.transform = 'scale(1)'; 
-            }, 200); 
-          }
+          if (img) { img.style.opacity = '0'; img.style.transform = 'scale(0.95)';
+            setTimeout(() => { img.style.transition = 'opacity 0.8s ease, transform 0.8s ease'; img.style.opacity = '1'; img.style.transform = 'scale(1)'; }, 200); }
           imgObs.unobserve(entry.target);
         }
       });

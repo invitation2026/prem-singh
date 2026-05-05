@@ -43,17 +43,6 @@ body {
 }
 
 /* =========================================
-   LOADER (Ensure this matches your inline CSS)
-   ========================================= */
-.loader {
-  position: fixed; inset: 0; background: var(--bg-dark);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-content { text-align: center; }
-
-/* =========================================
    BACKGROUNDS (Particles & Parallax)
    ========================================= */
 #particles-canvas { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
@@ -109,7 +98,7 @@ body {
 @keyframes float-element { 0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; } 50% { transform: translateY(-25px) rotate(10deg); opacity: 1; } }
 
 /* =========================================
-   SCROLL HINT INDICATOR (NEW)
+   SCROLL HINT INDICATOR
    ========================================= */
 .scroll-hint {
   position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
